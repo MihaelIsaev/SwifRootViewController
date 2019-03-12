@@ -10,6 +10,8 @@
 		471C2E3A2238246900121EA8 /* SwifRootViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471C2E302238246900121EA8 /* SwifRootViewController.framework */; };
 		471C2E3F2238246900121EA8 /* SwifRootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C2E3E2238246900121EA8 /* SwifRootViewControllerTests.swift */; };
 		471C2E412238246900121EA8 /* SwifRootViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 471C2E332238246900121EA8 /* SwifRootViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		471C2E4B2238248400121EA8 /* SwifRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C2E4A2238248400121EA8 /* SwifRootViewController.swift */; };
+		471C2E4D223824B400121EA8 /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C2E4C223824B400121EA8 /* DeepLinkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		471C2E392238246900121EA8 /* SwifRootViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwifRootViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		471C2E3E2238246900121EA8 /* SwifRootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifRootViewControllerTests.swift; sourceTree = "<group>"; };
 		471C2E402238246900121EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		471C2E4A2238248400121EA8 /* SwifRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwifRootViewController.swift; sourceTree = "<group>"; };
+		471C2E4C223824B400121EA8 /* DeepLinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				471C2E332238246900121EA8 /* SwifRootViewController.h */,
+				471C2E4C223824B400121EA8 /* DeepLinkManager.swift */,
+				471C2E4A2238248400121EA8 /* SwifRootViewController.swift */,
 				471C2E342238246900121EA8 /* Info.plist */,
 			);
 			path = SwifRootViewController;
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					471C2E2F2238246900121EA8 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					471C2E382238246900121EA8 = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +201,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				471C2E4B2238248400121EA8 /* SwifRootViewController.swift in Sources */,
+				471C2E4D223824B400121EA8 /* DeepLinkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +350,7 @@
 		471C2E452238246900121EA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +368,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mihaelisaev.SwifRootViewController;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +377,7 @@
 		471C2E462238246900121EA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +403,7 @@
 		471C2E482238246900121EA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94H38KUMB5;
 				INFOPLIST_FILE = SwifRootViewControllerTests/Info.plist;
@@ -409,6 +422,7 @@
 		471C2E492238246900121EA8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94H38KUMB5;
 				INFOPLIST_FILE = SwifRootViewControllerTests/Info.plist;
