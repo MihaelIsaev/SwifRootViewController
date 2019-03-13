@@ -12,7 +12,7 @@ pod 'SwifRootViewController', '~> 0.1.0'
 
 ## How to use
 
-Create `RootViewController.swift` in your project and inherit it from `SwifRootViewCtonroller` like this
+Create a `RootViewController.swift` in your project and inherit it from `SwifRootViewCtonroller` like this
 
 ```swift
 import UIKit
@@ -60,7 +60,7 @@ class RootViewController: SwifRootViewController<DeeplinkType> {
 
 If you don't want to use deep links for now you could use `SwifRootViewControllerSimple` instead of `SwifRootViewController<DeeplinkType>`
 
-### Setting `RootViewController` as a window's `rootViewController`
+##### Setting `RootViewController` as a window's `rootViewController`
 
 ```swift
 @UIApplicationMain
@@ -81,7 +81,7 @@ class AppDelegateBase: UIResponder, UIApplicationDelegate {
 ```
 
 ### Switching screens
-First of all declare helpers in AppDelegate
+First of all declare helpers in `AppDelegate`
 ```swift
 extension AppDelegate {
     static var shared: AppDelegate {
@@ -102,9 +102,9 @@ AppDelegate.shared.rootViewController.switchToLogout()
 
 ### Deep links
 
-### Setting `RootViewController` as a window's `rootViewController`
+##### Setting `RootViewController` as a window's `rootViewController`
 
-ShortcutParser
+Implement `ShortcutParser`
 ```swift
 import Foundation
 import UIKit
@@ -141,7 +141,7 @@ class ShortcutParser {
 }
 ```
 
-DeepLinkManager
+Implement `DeepLinkManager`
 ```swift
 import Foundation
 import UIKit
@@ -177,7 +177,7 @@ class DeepLinkManager {
 
 ```
 
-Configure AppDelegate
+Configure `AppDelegate`
 ```swift
 @UIApplicationMain
 class AppDelegateBase: UIResponder, UIApplicationDelegate {
