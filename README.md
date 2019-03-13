@@ -19,29 +19,37 @@ import UIKit
 import SwifRootViewController
 
 class RootViewController: SwifRootViewController<DeeplinkType> {
+    // may be shown on app launch as initial view controller
     override var splashScreen: UIViewController {
         return SplashViewController() // replace with yours
     }
+    
+    // where user will be moved on `showLoginScreen`
     override var loginScreen: UIViewController {
         return LoginViewController() // replace with yours
     }
+    
     // where user will be moved on `switchToLogout`
     override var logoutScreen: UIViewController {
         return LoginViewController() // replace with yours
     }
+    
     // means your main view controller for authorized users
     override var mainScreen: UIViewController {
         return MainViewController() // replace with yours
     }
+    
     // shows before main screen
     override var onboardingScreen: UIViewController? {
         // return something here to show it right after authorization
         return nil
     }
+    
     // check authorization here and return proper screen
     override var initialScreen: UIViewController {
         return Session.shared.isAuthorized ? splashScreen : loginScreen
     }
+    
     // handle deep links here
     override func handleDeepLink(type: DeeplinkType) {
         /// check you deep link in switch/case
