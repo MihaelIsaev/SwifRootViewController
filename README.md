@@ -73,9 +73,23 @@ class AppDelegateBase: UIResponder, UIApplicationDelegate {
 ```
 
 ### Switching screens
-First of all 
+First of all declare helpers in AppDelegate
 ```swift
-
+extension AppDelegate {
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var rootViewController: RootViewController {
+        return window!.rootViewController as! RootViewController
+    }
+}
+```
+Then use them from anywhere like this
+```swift
+AppDelegate.shared.rootViewController.showLoginScreen()
+AppDelegate.shared.rootViewController.switchToMainScreen()
+AppDelegate.shared.rootViewController.switchToLogout()
 ```
 
 ### Deep links
