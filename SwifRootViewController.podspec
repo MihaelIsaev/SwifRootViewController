@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwifRootViewController'
-  s.version          = '1.0.0'
-  s.summary          = 'Best practice for root navigation view controller'
+  s.version          = '0.2.0'
+  s.summary          = 'Useful root navigation view controller'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = 'Best practice for root navigation view controller'
+  s.description      = 'Useful root navigation view controller (best practice)'
 
   s.homepage         = 'https://github.com/MihaelIsaev/SwifRootViewController'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'

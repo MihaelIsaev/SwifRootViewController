@@ -19,6 +19,12 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
     
     public internal(set) var current: UIViewController = UIViewController()
     
+    enum ScreenType {
+        case splash, login, logout, main, onboarding, nothing
+    }
+    
+    var currentType: ScreenType = .nothing
+    
     public var deeplink: DeeplinkType? {
         didSet {
             if let deeplink = deeplink {
@@ -39,7 +45,6 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
     
     public init() {
         super.init(nibName:  nil, bundle: nil)
-        print("SwifRootViewController.initialScreen: \(initialScreen)")
         current = initialScreen
     }
     
@@ -57,21 +62,41 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
     }
     
     open func showLoginScreen() {
+        if currentType == .login {
+            print("⚠️ Don't show login twice")
+            return
+        }
+        currentType = .login
         replaceWithoutAnimation(loginScreen)
     }
     
     @discardableResult
     open func showOnboardingScreen() -> Bool {
         guard let new = onboardingScreen else { return false }
+        if currentType == .onboarding {
+            print("⚠️ Don't show onboarding twice")
+            return false
+        }
+        currentType = .onboarding
         replaceWithoutAnimation(new)
         return true
     }
     
     open func switchToLogout() {
+        if currentType == .logout {
+            print("⚠️ Don't call switch to logout twice")
+            return
+        }
+        currentType = .logout
         animateDismissTransition(to: logoutScreen)
     }
     
     open func switchToMainScreen() {
+        if currentType == .main {
+            print("⚠️ Don't call switch to main screen twice")
+            return
+        }
+        currentType = .main
         if shouldShowOnboardingBeforeMainScreen, showOnboardingScreen() { return }
         animateFadeTransition(to: mainScreen) { [weak self] in
             if let deeplink = self?.deeplink {
@@ -102,6 +127,7 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
             new.didMove(toParent: self)
             self.current = new
             completion?()
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
     
