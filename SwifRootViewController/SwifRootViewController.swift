@@ -98,8 +98,8 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
             print("⚠️ Don't call switch to main screen twice")
             return
         }
-        currentType = .main
         if shouldShowOnboardingBeforeMainScreen, showOnboardingScreen() { return }
+        currentType = .main
         animateFadeTransition(to: mainScreen) { [weak self] in
             if let deeplink = self?.deeplink {
                 self?.handleDeepLink(type: deeplink)
