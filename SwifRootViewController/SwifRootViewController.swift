@@ -118,6 +118,8 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
         current.removeFromParent()
         
         current = new
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
@@ -146,6 +148,7 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
             new.didMove(toParent: self)
             self.current = new
             completion?()
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
     
