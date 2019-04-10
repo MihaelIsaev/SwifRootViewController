@@ -88,7 +88,9 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
             return
         }
         currentType = .logout
-        animateDismissTransition(to: logoutScreen)
+        animateDismissTransition(to: logoutScreen) {
+            self.currentType = .login
+        }
     }
     
     open func switchToMainScreen() {
