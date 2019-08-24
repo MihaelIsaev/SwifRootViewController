@@ -7,7 +7,7 @@ SwifRootViewController is available through [CocoaPods](https://cocoapods.org).
 
 To install it, simply add the following line in your Podfile:
 ```ruby
-pod 'SwifRootViewController', '~> 0.1.0'
+pod 'SwifRootViewController', '~> 0.4.0'
 ```
 
 ## How to use
@@ -69,8 +69,9 @@ class AppDelegateBase: UIResponder, UIApplicationDelegate {
   
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     if super.application(application, didFinishLaunchingWithOptions: launchOptions) {
-        // needed to set `RootViewController` aswindow's  `rootViewController`
-        RootViewController().attach(to: &window)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        // needed to set `RootViewController` as window's `rootViewController`
+        RootViewController().attach(to: window)
         // needed for deep links registration
         // ShortcutParser.shared.registerShortcuts()
         return true
