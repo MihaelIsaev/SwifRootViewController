@@ -11,6 +11,15 @@ public protocol SwifRootViewControllerable {
     func showOnboardingScreen() -> Bool
     func switchToLogout()
     func switchToMainScreen()
+    func `switch`(to: UIViewController, as: ScreenType, animation: TransitionAnimation)
+}
+
+public enum ScreenType {
+    case splash, login, logout, main, onboarding, nothing
+}
+
+public enum TransitionAnimation {
+    case none, fade
 }
 
 typealias SwifRootViewControllerSimple = SwifRootViewController<Never>
@@ -18,10 +27,6 @@ typealias SwifRootViewControllerSimple = SwifRootViewController<Never>
 open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewControllerable {
     
     public internal(set) var current: UIViewController = UIViewController()
-    
-    enum ScreenType {
-        case splash, login, logout, main, onboarding, nothing
-    }
     
     var currentType: ScreenType = .nothing
     
@@ -43,7 +48,7 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
     
     open var shouldShowOnboardingBeforeMainScreen: Bool { return true }
     
-    public init() {
+    required public init() {
         super.init(nibName:  nil, bundle: nil)
         current = initialScreen
     }
@@ -107,6 +112,23 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
         }
     }
     
+    public func `switch`(to: UIViewController, as: ScreenType, animation: TransitionAnimation) {
+        currentType = `as`
+        switch animation {
+        case .none:
+            replaceWithoutAnimation(to)
+            proceedDeeplink()
+        case .fade:
+            animateFadeTransition(to: to, completion: proceedDeeplink)
+        }
+    }
+    
+    private func proceedDeeplink() {
+        if let deeplink = self.deeplink {
+            handleDeepLink(type: deeplink)
+        }
+    }
+    
     private func replaceWithoutAnimation(_ new: UIViewController) {
         addChild(new)
         new.view.frame = view.bounds
@@ -154,6 +176,12 @@ open class SwifRootViewController<DeeplinkType>: UIViewController, SwifRootViewC
     
     open func handleDeepLink(type: DeeplinkType) {}
     
+    public func attach(to window: UIWindow?) {
+        window?.rootViewController = self
+        window?.makeKeyAndVisible()
+    }
+    
+    @available(*, deprecated, message: "Use `attach` method without `inout`")
     public func attach(to window: inout UIWindow?) {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = self
