@@ -1,6 +1,8 @@
 # SwifRootViewController
 🍀Useful root navigation view controller (by best practice)
 
+<p><a href="https://discord.gg/q5wCPYv">SWIFT.STREAM COMMUNITY IN DISCORD</a></p>
+
 ## How to install
 
 SwifRootViewController is available through [CocoaPods](https://cocoapods.org).
